@@ -1,0 +1,53 @@
+@font-face {
+	font-family: sao;
+	src:url(sao.otf);
+}
+
+
+.row {
+	display: flex;
+}
+
+.col {
+	flex: 1;
+	
+}
+
+#out {
+	width: 500px;
+	height: 400px;
+	border:solid 5px red;
+	border-radius: 15px;
+	background-color: beige;
+
+}
+
+.form {
+	text-align: center;
+}
+
+.container {
+	text-align: center;
+	width: 900px;
+	margin: auto;
+}
+.out {
+	margin: auto;
+}
+
+#fck {
+	margin:auto;
+}
+
+#out3 {
+	margin: 20px 10px;
+}
+
+body {
+	background-color: gainsboro;
+	font-family: sao;
+}
+
+.rr {
+	width: 30px;
+}

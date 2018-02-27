@@ -1,0 +1,10 @@
+/* You can use 'background-image' property to set background image on your element. */
+
+.selector {
+	/* To set a background, use this property and value: */
+	background-image: url('images/path/here.png');
+
+	/* And these additional properties to fix the background sizing and repeating: */
+	background-size: cover;
+	background-repeat: no-repeat;
+}

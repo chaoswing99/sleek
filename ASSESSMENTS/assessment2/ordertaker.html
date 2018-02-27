@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order your Meal</title>
+	<script type="text/javascript" src="order.js"></script>
+	<link rel="stylesheet" type="text/css" href="order.css">
+</head>
+
+<body>
+<div class="container">
+	<h1>Order Here</h1>
+		<div class="row">
+			<div class="col form">
+				Name:
+				<input type="text" onkeyup="clk()" placeholder="Customer Name" id="name" name="">	<br> Customer Number:
+				<input type="number" onkeyup="clk()" placeholder="Customer Number" id="cnumber" name=""> <br>
+				<h1>Ulam</h1>
+				<input type="checkbox" value="0"  id="ulam1" onclick="clk()" class="rr"><label for="ulam1">Menudo</label>	<input type="number" disabled="" id="quan1" placeholder="Quantity" value="0" onkeyup="clk()" >25php<br>
+				<input type="checkbox" value="null"  id="ulam2" onclick="clk()" class="rr"><label for="ulam2">Afritada</label> <input type="number" disabled="" id="quan2" value="0" placeholder="Quantity" onkeyup="clk()" name="" >30php<br>
+				<input type="checkbox" value="null"  id="ulam3" onclick="clk()" class="rr"><label for="ulam3">Adobo</label> <input type="number" disabled="" id="quan3" value="0" placeholder="Quantity" onkeyup="clk()" name="" >20php<br>
+				<input type="checkbox" value="null"  id="ulam4" onclick="clk()" class="rr"><label for="ulam4">Mechado</label> <input type="number" disabled="" id="quan4" value="0" placeholder="Quantity" onkeyup="clk()" name="" >40php<br>
+				<input type="checkbox" value="null"  id="ulam5" onclick="clk()" class="rr"><label for="ulam5">Caldereta</label> <input type="number" disabled="" id="quan5" value="0" placeholder="Quantity" onkeyup="clk()" name="">15php<br>
+				<H1>Add Ons</H1>
+				<input type="checkbox" value="null" id="ons1" onclick="clk()" name=""><label for="ons1">Rice</label>10php<br>
+				<input type="checkbox" value="null" id="ons2" onclick="clk()" name=""><label for="ons2">Drinks</label>7php<br>
+				<input type="checkbox" value="null" id="ons3" onclick="clk()" name=""><label for="ons3">Special Sabaw</label>5php<br>
+				<H1>Discount</H1>
+				<input type="radio" value="null" id="dis1" onclick="clk()" name="dis"><label for="dis1">Senior Citizen</label>           20% Off <br>
+				<input type="radio" value="null" id="dis2" onclick="clk()" name="dis"><label for="dis2">Tesda Scholar</label> 100% Off<br>
+				<input type="radio" value="null" id="dis3" onclick="clk()" name="dis"><label for="dis3">Birthday Discount</label> 1% Off<br>
+				<input type="radio" value="null" id="dis4" onclick="clk()" name="dis"><label for="dis4">None</label><br>
+			</div>
+			<div class="col output">
+				<div id="out">
+							<TABLE id="fck">
+								<tr>
+									<td id="out1"></td>
+									<td id="out1a"></td>
+									<td id="out1b"></td>
+								</tr>
+								<tr>
+									<td id="out2"></td>
+									<td id="out2a"></td>
+									<td id="out2b"></td>
+								</tr>
+									<tr>
+									<th></th>
+									<th>Quantity</th>
+									<th>Price</th>
+								</tr>
+								<tr>
+									<td id="out3"></td>
+									<td id="out3a" value="0"></td>
+									<td id="out3b" name="outout1" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out4"></td>
+									<td id="out4a" value="null"></td>
+									<td id="out4b" name="outout2" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out5"></td>
+									<td id="out5a" value="null"></td>
+									<td id="out5b" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out6"></td>
+									<td id="out6a" value="null"></td>
+									<td id="out6b" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out7"></td>
+									<td id="out7a" value="null"></td>
+									<td id="out7b" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out8"></td>
+									<td id="out8a" value="null"></td>
+									<td id="out8b" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out9"></td>
+									<td id="out9a" value="null"></td>
+									<td id="out9b" value="null"></td>
+								</tr>
+								<tr>
+									<td id="out0"></td>
+									<td id="out0a" value="null"></td>
+									<td id="out0b" value="null"></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td id="totalt"></td>
+									<td id="totalp"></td>
+								</tr>
+							</TABLE>
+				</div>
+			</div>
+		</div>
+</div>
+</body>
+</html>
