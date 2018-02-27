@@ -1,0 +1,257 @@
+1. select name,sal from emp where sal>2850;
+
+
+MariaDB [batch_23]> select name,sal from emp where sal>2850;
++-------+------+
+| name  | sal  |
++-------+------+
+| King  | 5000 |
+| Jones | 2975 |
+| Ward  | 3000 |
+| Ford  | 3000 |
+| Scott | 3000 |
++-------+------+
+
+
+2. select name,job,hiredate from emp where hiredate > '1981-02-20' and hiredate < '1981-05-01';
+
++-------+----------+------------+
+| name  | job      | hiredate   |
++-------+----------+------------+
+| Jones | Manager  | 1981-04-03 |
+| Ward  | Salesman | 1981-02-23 |
++-------+----------+------------+
+
+
+3. select name,sal from emp where sal>1500 and (deptno=10 or deptno=30);
+
++-------+------+
+| name  | sal  |
++-------+------+
+| Blake | 2850 |
+| Clark | 2450 |
+| Allen | 1600 |
++-------+------+
+
+
+
+4. select name,job from emp where (mgr!= 7698 and mgr!= 7566 and mgr!= 7782) or name='King';
+
++-------+-----------+
+| name  | job       |
++-------+-----------+
+| King  | President |
+| Blake | Manager   |
+| Clark | Manager   |
+| Jones | Manager   |
+| Smith | Clerk     |
+| Adams | Clerk     |
++-------+-----------+
+
+
+
+5. select name,sal,comm from emp where comm>0 and comm<=1400 order by comm desc;
+
++--------+------+------+
+| name   | sal  | comm |
++--------+------+------+
+| Martin | 1250 | 1400 |
+| Allen  | 1600 |  300 |
++--------+------+------+
+
+6. select name from emp where name like ('__a_');
+
+MariaDB [batch_23]> select name from emp where name like ('__a_');
+Empty set (0.00 sec)
+
+7. select name from emp where name like('%ll%') and (deptno= 30 or mgr= 7782);
++--------+
+| name   |
++--------+
+| Allen  |
+| Miller |
++--------+
+
+
+8. select name,job,sal from emp where (job='Clerk' or job='Analyst') and (sal!= 3000 and sal!= 1000 and sal!= 5000);
+
++--------+-------+------+
+| name   | job   | sal  |
++--------+-------+------+
+| James  | Clerk |  950 |
+| Smith  | Clerk |  800 |
+| Adams  | Clerk | 1100 |
+| Miller | Clerk | 1300 |
++--------+-------+------+
+
+
+9. select deptno,max(sal) from emp group by deptno having max(sal)>2900;
++--------+----------+
+| deptno | max(sal) |
++--------+----------+
+|   NULL |     5000 |
+|     20 |     3000 |
++--------+----------+
+
+10.select job,sum(sal) from emp group by having sum(sal)>5000 and job!='Salesman' order by sum(sal) desc;
+
++---------+----------+
+| job     | sum(sal) |
++---------+----------+
+| Manager |     8275 |
+| Analyst |     6000 |
++---------+----------+
+
+
+11. select job,avg(sal) from emp group by job;
++-----------+-----------+
+| job       | avg(sal)  |
++-----------+-----------+
+| Analyst   | 3000.0000 |
+| Clerk     | 1037.5000 |
+| Manager   | 2758.3333 |
+| President | 5000.0000 |
+| Salesman  | 1837.5000 |
++-----------+-----------+
+
+
+12. select job,avg(sal),max(sal),sum(sal),min(sal) from emp group by job;
+
++-----------+-----------+----------+----------+----------+
+| job       | avg(sal)  | max(sal) | sum(sal) | min(sal) |
++-----------+-----------+----------+----------+----------+
+| Analyst   | 3000.0000 |     3000 |     6000 |     3000 |
+| Clerk     | 1037.5000 |     1300 |     4150 |      800 |
+| Manager   | 2758.3333 |     2975 |     8275 |     2450 |
+| President | 5000.0000 |     5000 |     5000 |     5000 |
+| Salesman  | 1837.5000 |     3000 |     7350 |     1250 |
++-----------+-----------+----------+----------+----------+
+
+
+13. select max(sal) as 'Maximum Salary', min(sal) as 'Minimum Salary', max(sal) - min(sal) as 'Difference' from emp;
++----------------+----------------+------------+
+| Maximum Salary | Minimum Salary | Difference |
++----------------+----------------+------------+
+|           5000 |            800 |       4200 |
++----------------+----------------+------------+
+
+
+14. select emp.name, emp.deptno, dept.name from emp, dept where dept.deptno=emp.deptno;
+
++--------+--------+------------+
+| name   | deptno | name       |
++--------+--------+------------+
+| Blake  |     30 | Sales      |
+| Clark  |     10 | Accounting |
+| Jones  |     20 | Research   |
+| Martin |     30 | Sales      |
+| Allen  |     30 | Sales      |
+| Turner |     30 | Sales      |
+| James  |     30 | Sales      |
+| Ward   |     20 | Research   |
+| Ford   |     20 | Research   |
+| Smith  |     20 | Research   |
+| Scott  |     20 | Research   |
+| Adams  |     20 | Research   |
+| Miller |     10 | Accounting |
++--------+--------+------------+
+
+
+15. select emp.job,dept.loc from emp, dept where emp.deptno=30 and dept.deptno=30 group by job;
++----------+---------+
+| job      | loc     |
++----------+---------+
+| Clerk    | Chicago |
+| Manager  | Chicago |
+| Salesman | Chicago |
++----------+---------+
+
+
+16. select emp.name,dept.loc,emp.comm from emp, dept where emp.comm is not null group by name;
++--------+----------+------+
+| name   | loc      | comm |
++--------+----------+------+
+| Allen  | New York |  300 |
+| Martin | New York | 1400 |
+| Turner | New York |    0 |
++--------+----------+------+
+
+
+17. select emp.name as 'Employee Name', dept.name as 'Department Name' from emp, dept where emp.name like ('%A%') and emp.deptno=dept.deptno;
++---------------+-----------------+
+| Employee Name | Department Name |
++---------------+-----------------+
+| Blake         | Sales           |
+| Clark         | Accounting      |
+| Martin        | Sales           |
+| Allen         | Sales           |
+| James         | Sales           |
+| Ward          | Research        |
+| Adams         | Research        |
++---------------+-----------------+
+
+18.  insert into emp (empno,name,job,mgr,hiredate,sal,comm,deptno) VALUES (7788,'Bob','Builder',7566,'1982-12-09',3000,null,20);
+
++-------+--------+-----------+------+------------+------+------+--------+
+| empno | name   | job       | mgr  | hiredate   | sal  | comm | deptno |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7839 | King   | President | NULL | 1981-11-17 | 5000 | NULL |   NULL |
+|  7698 | Blake  | Manager   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | Clark  | Manager   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7566 | Jones  | Manager   | 7839 | 1981-04-03 | 2975 | NULL |     20 |
+|  7654 | Martin | Salesman  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7499 | Allen  | Salesman  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7844 | Turner | Salesman  | 7698 | 1981-09-08 | 1500 |    0 |     30 |
+|  7900 | James  | Clerk     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7521 | Ward   | Salesman  | 7698 | 1981-02-23 | 3000 | NULL |     20 |
+|  7902 | Ford   | Analyst   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7369 | Smith  | Clerk     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7788 | Scott  | Analyst   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7876 | Adams  | Clerk     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7934 | Miller | Clerk     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
+|  7788 | Bob    | Builder   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
++-------+--------+-----------+------+------------+------+------+--------+
+
+19.  update emp set name ='Bimby' where job='Builder';
+	+-------+--------+-----------+------+------------+------+------+--------+
+| empno | name   | job       | mgr  | hiredate   | sal  | comm | deptno |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7839 | King   | President | NULL | 1981-11-17 | 5000 | NULL |   NULL |
+|  7698 | Blake  | Manager   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | Clark  | Manager   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7566 | Jones  | Manager   | 7839 | 1981-04-03 | 2975 | NULL |     20 |
+|  7654 | Martin | Salesman  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7499 | Allen  | Salesman  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7844 | Turner | Salesman  | 7698 | 1981-09-08 | 1500 |    0 |     30 |
+|  7900 | James  | Clerk     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7521 | Ward   | Salesman  | 7698 | 1981-02-23 | 3000 | NULL |     20 |
+|  7902 | Ford   | Analyst   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7369 | Smith  | Clerk     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7788 | Scott  | Analyst   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7876 | Adams  | Clerk     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7934 | Miller | Clerk     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
+|  7788 | Bimby  | Builder   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
++-------+--------+-----------+------+------------+------+------+--------+
+
+20. delete from emp where name='Bimby';
+
++-------+--------+-----------+------+------------+------+------+--------+
+| empno | name   | job       | mgr  | hiredate   | sal  | comm | deptno |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7839 | King   | President | NULL | 1981-11-17 | 5000 | NULL |   NULL |
+|  7698 | Blake  | Manager   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | Clark  | Manager   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7566 | Jones  | Manager   | 7839 | 1981-04-03 | 2975 | NULL |     20 |
+|  7654 | Martin | Salesman  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7499 | Allen  | Salesman  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7844 | Turner | Salesman  | 7698 | 1981-09-08 | 1500 |    0 |     30 |
+|  7900 | James  | Clerk     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7521 | Ward   | Salesman  | 7698 | 1981-02-23 | 3000 | NULL |     20 |
+|  7902 | Ford   | Analyst   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7369 | Smith  | Clerk     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7788 | Scott  | Analyst   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7876 | Adams  | Clerk     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7934 | Miller | Clerk     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+
+
