@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript</title>
+	</head>
+
+	<style type="text/css">
+		#Answer {
+			font-size: 100px;
+			font-weight: bold;
+			font-family: Arial;
+		}
+	</style>
+<body>
+<div class="container">
+<input type="text" placeholder="num1" id="pp">
+<input type="text" placeholder="num2" id="pp1">
+<input type="text" placeholder="operator" id="operator">
+<button type="button" onclick="show();">Answer</button>
+<p id="Answer">
+	
+</p>
+<script type="text/javascript">
+	function show() {
+		var x = document.getElementById('pp').value;
+		var y = document.getElementById('pp1').value;
+		var operator = document.getElementById('operator').value;
+		var w = document.getElementById('Answer');
+		var z;
+		
+		if (x == '' || y == '' || operator == '') {
+			z ="Enter required fields";
+		}
+
+		else if (operator != '+ - * /') {
+			z="Enter correct operator mothafucka";
+		}
+		if (operator == '+') {
+			z = parseInt(x)+ parseInt(y);
+		}
+		else if (operator == '-') {
+			z = x - y;
+		}
+		else if (operator == '*') {
+			z = x * y;
+		}
+		else if (operator == '/') {
+			z = x / y;
+		}
+
+	
+
+	// console.log(z);
+	w.innerHTML = z;
+	}
+	
+	</script>
+</div>
+</body>
+</html>
