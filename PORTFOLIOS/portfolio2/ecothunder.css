@@ -1,0 +1,155 @@
+/*ecothunder.css*/
+	@font-face {
+		font-family: sao;
+		src:url(sao.otf);
+
+}
+	body {
+		padding: 0;
+		margin:0;
+		font-family: sao;
+		text-align: center;
+		text-shadow: 1px 1px white;
+		color: black;
+	}
+
+	.clearfix {
+			clear: both;
+		}
+
+	#header {
+	
+		background-color: GoldenRod ;
+		
+	
+	}
+
+	.container {
+		margin: auto;
+		width: 1200px;
+		
+		
+	
+	}
+
+	.box	{
+		width: 50%;
+		float: left;
+		
+			}
+
+	.logo {
+		font-size: 40px;
+		animation: blur 1S ease-out infinite;
+ 		text-shadow: 10px 0px 5px #f42c00, 10px 0px 7px #cef442;
+	}
+
+	.list {
+		display: inline;
+
+	}
+
+	.menu {
+		text-decoration: none;
+		padding: 10px;
+		vertical-align: middle;
+		text-align: center;
+		margin: 0 50px 0 0;
+		background: linear-gradient(to left, #999966 0%, #003300 100%);
+		border: solid 1px black;
+		color: white;
+		text-shadow: none;
+		border-radius: 10px;
+
+	
+			}
+
+	.menu2 {
+		text-decoration: none;
+		padding: 10px;
+		text-align: center;
+		background: linear-gradient(to left, #336600 0%, #00ff00 100%);
+		border: solid 1px black;
+		color: white;
+		text-shadow: none;
+		border-radius: 10px;
+
+	}
+
+	.menu:hover {
+		background-color: pink;
+	}
+	
+	.menu2:hover {
+		background-color: pink;
+		border-radius: 10px
+	}
+	.img {
+			
+		display: block;
+		margin:auto;
+		border: 1px solid white;
+		padding:1px;
+		height: auto;
+		width: 400px;
+	}
+
+	.box2 {
+		width: 33.3333%;
+		float: left;
+
+}
+
+		
+
+	.img2 {
+		display: block;
+		margin:auto;
+		padding: 1px;
+		
+		border: 1px solid black;
+			}
+
+	#jumbotron {
+		background-color: BurlyWood ;
+		
+		
+	}
+
+	#content {
+		background-color: LemonChiffon ;
+		
+	}
+
+	#footer {
+		background-color: grey;
+		
+	}
+
+
+@keyframes blur {
+  from {
+    text-shadow:0px 0px 10px #cef442,
+      0px 0px 10px #fff, 
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 50px #fff,
+      0px 0px 50px #fff,
+      0px 0px 50px #7B96B8,
+      0px 0px 150px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px -10px 100px #7B96B8,
+      0px -10px 100px #7B96B8;
+  }
+}
+
+p {
+	padding: auto;
+}
